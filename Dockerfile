@@ -1,3 +1,9 @@
-FROM debian
+FROM chilijung/docker-opencv
 
-CMD bash -c "while true; do echo Hohoho;sleep 5; done"
+RUN mkdir -p /usr/src/FaceDetect
+WORKDIR /usr/src/FaceDetect
+RUN curl -sL https://github.com/shantnu/Webcam-Face-Detect/archive/master.tar.gz \
+	| tar xz -C /usr/src/FaceDetect FaceDetect.tar.gz
+
+CMD python webcam.py haarcascade_frontalface_default.xml
+
