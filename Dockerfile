@@ -17,6 +17,7 @@ RUN apt-get update \
 		libavcodec-dev \
 		libavfilter-dev \
 		libswscale-dev \
+		libgtk2.0-dev \
 		libjpeg-dev \
 		libpng-dev \
 		libtiff-dev \
@@ -26,6 +27,10 @@ RUN apt-get update \
 		libxine-dev \
 		libeigen3-dev \
 		libtbb-dev \
+		pkg-config \
+		xserver-xorg-core \
+		xorg \
+		libgtk2.0-0 \
 		unzip
 
 RUN wget 'https://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11-py2.7.egg' \
@@ -42,5 +47,6 @@ RUN /bin/sh /build_opencv.sh \
 RUN mkdir -p /usr/src/FaceDetect
 WORKDIR /usr/src/FaceDetect
 COPY ./ /usr/src/FaceDetect/
-CMD bash start.sh
+RUN chmod +x start.sh
+CMD xinit start.sh
 
