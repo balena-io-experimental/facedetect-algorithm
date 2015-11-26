@@ -41,9 +41,6 @@ RUN /bin/sh /build_opencv.sh \
 
 RUN mkdir -p /usr/src/FaceDetect
 WORKDIR /usr/src/FaceDetect
-RUN curl -sL https://github.com/shantnu/Webcam-Face-Detect/archive/master.tar.gz \
-	| tar xz -C /usr/src/FaceDetect
-
 COPY ./ /usr/src/FaceDetect/
 CMD bash start.sh
 
