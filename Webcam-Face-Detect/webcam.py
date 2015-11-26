@@ -5,11 +5,12 @@ cascPath = sys.argv[1]
 faceCascade = cv2.CascadeClassifier(cascPath)
 
 video_capture = cv2.VideoCapture(0)
-
+print(video_capture)
 while True:
     # Capture frame-by-frame
     ret, frame = video_capture.read()
-
+    print(ret)
+    print(frame)
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     faces = faceCascade.detectMultiScale(

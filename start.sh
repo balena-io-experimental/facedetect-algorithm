@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd /usr/src/FaceDetect/Webcam-Face-Detect-master
+cd ./Webcam-Face-Detect
 python2.7 webcam.py haarcascade_frontalface_default.xml
