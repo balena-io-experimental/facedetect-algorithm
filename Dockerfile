@@ -44,5 +44,6 @@ WORKDIR /usr/src/FaceDetect
 RUN curl -sL https://github.com/shantnu/Webcam-Face-Detect/archive/master.tar.gz \
 	| tar xz -C /usr/src/FaceDetect
 
-CMD python2.7 webcam.py haarcascade_frontalface_default.xml
+COPY ./ /usr/src/FaceDetect/
+CMD bash start.sh
 
