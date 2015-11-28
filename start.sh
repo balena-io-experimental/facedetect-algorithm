@@ -1,9 +1,7 @@
 #!/bin/bash
 
-mount -t devtmpfs /dev
-
-while [ ! -e /dev/video2 ]; do
-	echo "Waiting for video device to be available"
+while [ ! -e /foreign-data/video2 ]; do
+	echo "Waiting for video pipe to be available"
 	sleep 2
 done
 

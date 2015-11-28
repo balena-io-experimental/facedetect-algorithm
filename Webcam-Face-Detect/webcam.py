@@ -16,7 +16,7 @@ def formatFaces(f):
 cascPath = sys.argv[1]
 faceCascade = cv2.CascadeClassifier(cascPath)
 
-video_capture = cv2.VideoCapture(2)
+video_capture = cv2.VideoCapture('/foreign-data/video2')
 with open(pipeFile, 'w') as openPipe:
     while True:
         # Capture frame-by-frame
