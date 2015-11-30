@@ -21,7 +21,7 @@ with open(pipeFile, 'w') as openPipe:
     while True:
         # Capture frame-by-frame
         ret, frame = video_capture.read()
-        if ret && len(frame) > 0:
+        if ret and len(frame) > 0:
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
             faces = faceCascade.detectMultiScale(
