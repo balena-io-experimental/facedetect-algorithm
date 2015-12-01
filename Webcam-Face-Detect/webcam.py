@@ -17,7 +17,7 @@ cascPath = sys.argv[1]
 faceCascade = cv2.CascadeClassifier(cascPath)
 
 video_capture = cv2.VideoCapture('/usr/src/FaceDetect/video.sdp')
-openPipe = open(pipeFile, 'w')
+
 while True:
     # Capture frame-by-frame
     ret, frame = video_capture.read()
@@ -33,7 +33,9 @@ while True:
         )
         if len(faces) > 0:
             print(faces)
+            openPipe = open(pipeFile, 'w')
             openPipe.write(formatFaces(faces))
+            openPipe.close()
 
 # When everything is done, release the capture
 video_capture.release()
