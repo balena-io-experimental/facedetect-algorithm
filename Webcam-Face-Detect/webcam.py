@@ -1,6 +1,7 @@
 import cv2
 import sys
 import os
+import time
 
 pipeFile = "/foreign-data/faces"
 
@@ -19,22 +20,28 @@ faceCascade = cv2.CascadeClassifier(cascPath)
 video_capture = cv2.VideoCapture('/usr/src/FaceDetect/video.sdp')
 
 while True:
-    # Capture frame-by-frame
-    ret, frame = video_capture.read()
-    if ret and len(frame) > 0:
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    video_capture = cv2.VideoCapture('/usr/src/FaceDetect/video.sdp')
+    if not video_capture:
+        time.sleep(0.1)
+        continue
+    while True:
+        # Capture frame-by-frame
+        ret, frame = video_capture.read()
+        if not ret:
+            video_capture.release()
+            time.sleep(0.1)
+            break
+        if len(frame) > 0:
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-        faces = faceCascade.detectMultiScale(
-            gray,
-            scaleFactor=1.1,
-            minNeighbors=5,
-            minSize=(30, 30),
-            flags=cv2.cv.CV_HAAR_SCALE_IMAGE
-        )
-        if len(faces) > 0:
-            openPipe = open(pipeFile, 'w')
-            openPipe.write(formatFaces(faces))
-            openPipe.close()
-
-# When everything is done, release the capture
-video_capture.release()
+            faces = faceCascade.detectMultiScale(
+                gray,
+                scaleFactor=1.1,
+                minNeighbors=5,
+                minSize=(30, 30),
+                flags=cv2.cv.CV_HAAR_SCALE_IMAGE
+            )
+            if len(faces) > 0:
+                openPipe = open(pipeFile, 'w')
+                openPipe.write(formatFaces(faces))
+                openPipe.close()

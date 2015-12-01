@@ -1,7 +1,7 @@
 #!/bin/bash
 
-while [ ! -e /foreign-data/video2 ]; do
-	echo "Waiting for video pipe to be available"
+while [ ! -p /foreign-data/faces ]; do
+	echo "Waiting for output pipe to be available"
 	sleep 2
 done
 
