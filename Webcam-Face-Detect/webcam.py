@@ -32,6 +32,7 @@ with open(pipeFile, 'w') as openPipe:
                 flags=cv2.cv.CV_HAAR_SCALE_IMAGE
             )
             if len(faces) > 0:
+                print(faces)
                 openPipe.write(formatFaces(faces))
 
 # When everything is done, release the capture
