@@ -19,6 +19,7 @@ faceCascade = cv2.CascadeClassifier(cascPath)
 
 video_capture = cv2.VideoCapture('/usr/src/FaceDetect/video.sdp')
 
+count = 0
 while True:
     video_capture = cv2.VideoCapture('/usr/src/FaceDetect/video.sdp')
     if not video_capture:
@@ -31,7 +32,9 @@ while True:
             video_capture.release()
             time.sleep(0.1)
             break
-        if len(frame) > 0:
+
+        count += 1
+        if (count % 10) ==0 and len(frame) > 0:
             gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
             faces = faceCascade.detectMultiScale(
@@ -45,3 +48,5 @@ while True:
                 openPipe = open(pipeFile, 'w')
                 openPipe.write(formatFaces(faces))
                 openPipe.close()
+
+        time.sleep(0.001)
