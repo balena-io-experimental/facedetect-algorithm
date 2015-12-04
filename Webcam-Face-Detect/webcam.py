@@ -41,7 +41,7 @@ while True:
                 gray,
                 scaleFactor=1.1,
                 minNeighbors=5,
-                minSize=(70, 70),
+                minSize=(80, 80),
                 flags=cv2.cv.CV_HAAR_SCALE_IMAGE
             )
             if len(faces) > 0:
