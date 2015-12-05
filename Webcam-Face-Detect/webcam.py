@@ -44,7 +44,6 @@ while True:
                 minSize=(80, 80),
                 flags=cv2.cv.CV_HAAR_SCALE_IMAGE
             )
-            
             if len(faces) > 0:
                 openPipe = open(pipeFile, 'w')
                 openPipe.write(formatFaces(faces))
